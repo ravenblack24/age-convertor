@@ -20,6 +20,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadApi();
+  }
+
+  loadApi() {
     fetch('/api/all')
       .then(res => res.json())
       .then((result) => {
@@ -51,12 +55,12 @@ class App extends Component {
         <React.Fragment>
         <div className="App">
           <form action="POST" method="/api/new">
-            <label for="name" className="app__form__label">Your name</label>
+            <label htmlFor="name" className="app__form__label">Your name</label>
             <input
               name="name"
               type="text"
             />
-            <label for="dob" className="app__form__label">Your date of birth</label>
+            <label htmlFor="dob" className="app__form__label">Your date of birth</label>
             <SingleDatePicker 
               name="dob"
               date={this.state.date} // momentPropTypes.momentObj or null
@@ -74,7 +78,7 @@ class App extends Component {
         <div>
           <ul>
             {this.state.items.reverse().map(item => (
-              <li key={item._id}>
+              <li key={item.id}>
                 {item.name} {item.years} {item.days} {item.hours}
               </li>
             ))} 

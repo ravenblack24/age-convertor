@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
+        <form action="POST" method="/api/new">
           <label for="name" className="app__form__label">Your name</label>
           <input
             name="name"

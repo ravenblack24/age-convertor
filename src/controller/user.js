@@ -8,7 +8,7 @@ const addNew = async (req, res) => {
     try {
         await createNew(name, dateOfBirth);
         console.log("saved");
-    
+        res.sendStatus(200);    
     } catch (err) {
         return res.send({error: "Unable to save"});
     }

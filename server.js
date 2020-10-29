@@ -3,21 +3,22 @@ const user = require('./src/controller/user');
 const { check, validationResult } = require('express-validator');
 
 const app = express();
-
-app.use(express.urlencoded({extended:false}));
+app.use(express.json()); //Used to parse JSON bodies
+app.use(express.urlencoded({extended:true}));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname+'/views/index.html');
 })
 
-app.post('/api/new', [
-  check('name').isAlphanumeric(),
-  check('dateOfBirth').isDate()
-], (req, res) => {
-  const errors = validationResult(req);
-  if(!errors.isEmpty()) {
-    return res.status(422).json({errors: errors.array()});
-  }
+app.post('/api/new', (req, res) => {
+  // [
+  //   check('name').isAlphanumeric(),
+  //   check('date').isDate()
+  // ],
+  // const errors = validationResult(req);
+  // if(!errors.isEmpty()) {
+  //   return res.status(422).json({errors: errors.array()});
+  // }
 
   user.addNew(req, res);
 

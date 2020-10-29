@@ -2,9 +2,8 @@ const {createNew, fetchUsers} = require('../services/user');
 const moment = require('moment');
 
 const addNew = async (req, res) => {
-
     const name = req.body.name;
-    const dateOfBirth = req.body.dob;
+    const dateOfBirth = req.body.date;
 
     try {
         await createNew(name, dateOfBirth);

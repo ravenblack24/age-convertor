@@ -10,13 +10,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null,
       focused: false,
       error: null,
       isLoaded: false,
+      formData : {
+        name: "",
+        date: null
+      },
       items: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -40,9 +45,34 @@ class App extends Component {
     })
   }
 
-  handleSubmit() {
-      
+  onDateChange(dateSelected) {
+    const formData = {...this.state.formData, date: dateSelected};
+    this.setState({
+      formData
+    })
+  }
+
+  handleChange(event) {
+    const formData = {...this.state.formData, name: event.target.value};
+    this.setState({
+      formData
+    })
+  }
+
+  handleSubmit(event) {
+    console.log(this.state.formData);
+      fetch('/api/new', {
+        method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(this.state.formData)
+      }).then((res => {
+        console.log(res);
+        return res.json;
+      }))
+
+      event.preventDefault();
   }  
+
   render() {
     const { error, isLoaded} = this.state;
     if (error) {
@@ -56,15 +86,11 @@ class App extends Component {
         <div className="App">
           <form action="POST" method="/api/new">
             <label htmlFor="name" className="app__form__label">Your name</label>
-            <input
-              name="name"
-              type="text"
-            />
+            <input type="text" value={this.state.formData.name} onChange={this.handleChange} />
             <label htmlFor="dob" className="app__form__label">Your date of birth</label>
             <SingleDatePicker 
-              name="dob"
-              date={this.state.date} // momentPropTypes.momentObj or null
-              onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+              date={this.state.formData.date} // momentPropTypes.momentObj or null
+              onDateChange={this.onDateChange} // PropTypes.func.isRequired
               focused={this.state.focused} // PropTypes.bool
               onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
               id="dob" // PropTypes.string.isRequired,
@@ -88,6 +114,12 @@ class App extends Component {
       );
     }
   }
+}
+
+const encodeFormData = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
 }
 
 export default App;

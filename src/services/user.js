@@ -14,7 +14,7 @@ const createNew = async (name, dateOfBirth) => {
     }
 }
 
-const fetchData = async () => {
+const fetchUsers = async () => {
     try {
        var data = await UserAge.find({});
        console.log("data retrieved");
@@ -24,4 +24,4 @@ const fetchData = async () => {
     }
 }
 
-module.exports = {createNew, fetchData}
+module.exports = {createNew, fetchUsers}

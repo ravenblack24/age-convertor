@@ -1,7 +1,8 @@
-const {createNew, fetchData} = require('../services/user');
-var moment = require('moment');
+const {createNew, fetchUsers} = require('../services/user');
+const moment = require('moment');
 
 const addNew = async (req, res) => {
+
     const name = req.body.name;
     const dateOfBirth = req.body.dob;
 
@@ -17,7 +18,7 @@ const addNew = async (req, res) => {
 const getAll = async (req, res) => {
 
     try {
-        const data = await fetchData();
+        const data = await fetchUsers();
         const response = [];
         const now = new moment();
 

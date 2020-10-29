@@ -1,5 +1,6 @@
 const express = require('express');
 const user = require('./src/controller/user');
+const { check, validationResult } = require('express-validator');
 
 const app = express();
 
@@ -9,14 +10,21 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname+'/views/index.html');
 })
 
-app.post('/api/new', (req, res) => {
+app.post('/api/new', [
+  check('name').isAlphanumeric(),
+  check('dateOfBirth').isDate()
+], (req, res) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  }
+
   user.addNew(req, res);
-  //res.send({ express: 'Hello World' });
+
 });
 
 app.get('/api/all', (req, res) => {
   user.getAll(req, res);
-  //res.send({ express: 'Hello World' });
 });
 
 const port = process.env.PORT || 3001;

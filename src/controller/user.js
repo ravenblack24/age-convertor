@@ -24,6 +24,7 @@ const getAll = async (req, res) => {
         data.forEach(entry => {
             let element = {};
             let date = entry.dateOfBirth;
+            element.id = entry._id;
             element.name = entry.name;
             element.years = now.diff(date, 'years'),
             element.days = now.diff(date, 'days'),

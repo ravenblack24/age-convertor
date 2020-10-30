@@ -33,23 +33,22 @@ class Form extends Component {
         })
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         console.log(this.state.formData);
-        fetch('/api/new', {
+        
+        await fetch('/api/new', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(this.state.formData)
-        }).then((res => {
-            console.log(res);
-            this.props.loadData();
-            this.setState({
-                formData : { 
+        });
+
+        await this.props.loadData();
+        this.setState({
+            formData : { 
                 name: "",
                 date: null
-                }
-            })  
-            return res.json;
-        }))
+            }
+        })  
         event.preventDefault();
     }  
 

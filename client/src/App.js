@@ -14,34 +14,23 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    this.loadApi();
+  async componentDidMount() {
+    await this.loadApi();
   }
 
-  loadApi() {
-    fetch('/api/all')
-      .then(res => res.json())
-      .then((result) => {
-         this.setState({
-          isLoaded: true,
-          items: result
-      });
-    },
-    (error) => {
+  async loadApi() {
+    const data = await fetch('/api/all');
+    const items = await data.json();
+
+    if(items) {
       this.setState({
-        isLoaded: true,
-        error
-      });
-    })
+        items,
+        isLoaded: true
+      })
+    }
   }
 
   render() {
-    const { error, isLoaded} = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
       return (
         <React.Fragment>
           <main className="main">
@@ -51,7 +40,6 @@ class App extends Component {
         </React.Fragment>
       );
     }
-  }
 }
 
 export default App;

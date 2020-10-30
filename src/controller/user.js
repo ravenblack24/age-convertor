@@ -26,11 +26,9 @@ const getAll = async (req, res) => {
             let date = entry.dateOfBirth;
             element.id = entry._id;
             element.name = entry.name;
-            element.years = now.diff(date, 'years'),
-            element.days = now.diff(date, 'days'),
-            element.hours = now.diff(date, 'hours')
-
-            // let element = calculateAge(entry);
+            element.years = (now.diff(date, 'years').toLocaleString()),
+            element.days = (now.diff(date, 'days').toLocaleString()),
+            element.hours = (now.diff(date, 'hours').toLocaleString())
             response.push(element);
         });
 

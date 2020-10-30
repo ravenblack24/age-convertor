@@ -31,15 +31,15 @@ class App extends Component {
   }
 
   render() {
-      return (
-        <React.Fragment>
-          <main className="main">
-            <Form loadData = {this.loadApi}/>
-            <Results data={this.state.items} />
-          </main>
-        </React.Fragment>
-      );
-    }
+    return (
+      <React.Fragment>
+        <main className="main">
+          <Form loadData = {this.loadApi}/>
+          <Results data={this.state.items} />
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

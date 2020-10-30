@@ -64,17 +64,22 @@ button {
 
 .results__table {
   width: 80%;
-  padding: 0;
-  margin: 3em auto 0;
+  margin: 3em auto;
+  border-collapse: collapse;
 }
 
 .results__table tr th {
   text-transform: lowercase;
+  padding: 0.1em
 }
 
 .results__table tr td {
-  padding: 0;
+  padding: 0.1em;
   border-top: 1px solid #ccc
+}
+
+.results__table tbody tr:hover {
+  background-color: white;
 }
 
 .app__form__label {

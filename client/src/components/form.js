@@ -65,7 +65,7 @@ class Form extends Component {
                     onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
                     id="dob" // PropTypes.string.isRequired,
                     isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
-                    numberOfMonths={2}
+                    numberOfMonths={1}
                     displayFormat="DD/MM/YYYY"
                 />
                 <br />

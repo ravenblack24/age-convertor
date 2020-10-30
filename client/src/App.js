@@ -67,6 +67,13 @@ class App extends Component {
           body: JSON.stringify(this.state.formData)
       }).then((res => {
         console.log(res);
+        this.loadApi();
+        this.setState({
+          formData : { 
+            name: "",
+            date: null
+          }
+        })  
         return res.json;
       }))
 
@@ -114,12 +121,6 @@ class App extends Component {
       );
     }
   }
-}
-
-const encodeFormData = (data) => {
-  return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
 }
 
 export default App;

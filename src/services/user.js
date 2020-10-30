@@ -8,7 +8,8 @@ const createNew = async (name, dateOfBirth) => {
         };
         const newUser = UserAge(query);
         const saved = await newUser.save();
-        console.log("Saved"); 
+        console.log("Saved");
+        return saved;
     } catch (err) {
         throw new Error("Error saving new entry");
     }
@@ -24,4 +25,14 @@ const fetchUsers = async () => {
     }
 }
 
-module.exports = {createNew, fetchUsers}
+const calculateAge = (userRecord) => {
+    let element = {};
+    let date = userRecord.dateOfBirth;
+    element.name = userRecord.name;
+    element.years = now.diff(date, 'years'),
+    element.days = now.diff(date, 'days'),
+    element.hours = now.diff(date, 'hours')
+    return element;
+}
+
+module.exports = {createNew, fetchUsers, calculateAge}

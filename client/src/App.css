@@ -1,11 +1,84 @@
-.app {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 
+body {
+    background-color:#f6e9e9;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 
-.app__form {
+.main {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
 
+.SingleDatePickerInput_1 {
+  width: 65%;
+}
+
+.DateInput {
+  width: 90%;
+  margin: 0;
+  padding: 0.25em;
+}
+
+.DateInput_input_1 {
+  width: 100%;
+  line-height: 24px;
+  padding:0;
+  border-bottom: 0;
+}
+
+.DateInput_input__focused {
+  border: 0;
+}
+
+.app__form__name {
+  padding: .25em;
+  font-size: 1.25rem;
+  margin-bottom: .5em;
+  width: 40%;
+}
+
+button {
+  height: 1.6em;
+  font-size: 1.5rem;
+  background-color: white;
+  text-transform: lowercase;
+  font-style: italic;
+  padding: 0 1em;
+  font-weight: 700;
+  border: 1px solid black;
+  margin-top: 0.5em;
+}
+
+.results {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.results__table {
+  width: 80%;
+  padding: 0;
+  margin: 3em auto 0;
+}
+
+.results__table tr th {
+  text-transform: lowercase;
+}
+
+.results__table tr td {
+  padding: 0;
+  border-top: 1px solid #ccc
 }
 
 .app__form__label {
   display: block;
+  text-transform: lowercase; 
+  margin-bottom: 0.25em;
 }

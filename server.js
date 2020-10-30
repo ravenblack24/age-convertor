@@ -11,15 +11,14 @@ app.get("/", (req, res) => {
 })
 
 app.post('/api/new', (req, res) => {
-  // [
-  //   check('name').isAlphanumeric(),
-  //   check('date').isDate()
-  // ],
-  // const errors = validationResult(req);
-  // if(!errors.isEmpty()) {
-  //   return res.status(422).json({errors: errors.array()});
-  // }
-
+//   [
+//     check('name').isAlphanumeric(),
+//     check('date').isDate()
+//   ], 
+// const errors = validationResult(req);
+// if(!errors.isEmpty()) {
+//   return res.status(422).json({errors: errors.array()});
+// }
   user.addNew(req, res);
 
 });

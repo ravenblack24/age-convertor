@@ -28,8 +28,8 @@ const getAll = async (req, res) => {
             element.id = entry._id;
             element.name = entry.name;
             element.years = (now.diff(date, 'years').toLocaleString());
-            let leapYears = calculateAge(date);
-            console.log(leapYears);
+          //  let leapYears = calculateAge(date);
+          //  console.log(leapYears);
             // element.days = (now.diff(date, 'days').toLocaleString()),
             // element.hours = (now.diff(date, 'hours').toLocaleString())
            // response.push(element);

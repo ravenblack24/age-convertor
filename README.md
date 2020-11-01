@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Age convertor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This full stack app takes in name and date of birth and calculates a users age in years, days and hours.
+
+Calculated data for all entries is displayed in tabular format.
+
+## Table of contents
+* [General Info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Contact](#contact)
+
+## General info
+This app was built to satisfy the following User Story and acceptance criteria:
+
+- **User Story #1**: As a web user, I wish to find out my age accurate to number of hours so that I can impress my friends.
+
+- **Acceptance Criteria #1**: A name can be entered. 
+- **Acceptance Criteria #2**: My date of birth can be entered using a date picker.
+- **Acceptance Criteria #3**: My age in years days and hours is displayed.
+- **Acceptance Criteria #4**: Name and age of previous submissions is displayed
+
+## Technologies
+* React.js, express.js, mongoose.js, mongodb, node.js
+
+The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+
+## Setup
+
+1. In the **root** project directory **AND** within the **client/** folder run: `npm install`, to install the required backend and frontend libraries.
+2. Create a .env file within the root project directory and create a <code>MONGO_URI=</code> entry with your MongoDB url.  There should be no whitespace seperating the variable from the value.
+3. Within the root directory, run `npm run dev` to start the app
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### 'node server.js'
 
-Runs the app in the development mode.\
+Runs the app in backend mode.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.  Note, the server should be restarted to reflect changes in code.
+
+### `npm run dev`
+
+Runs the full stack app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The page will reload if you make edits to front or backend code.\

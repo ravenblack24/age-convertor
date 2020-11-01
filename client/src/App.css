@@ -10,9 +10,36 @@ body {
     box-sizing: border-box;
 }
 
-.main {
+header {
+  background-color: black;
+}
+
+.header__container {
   max-width: 700px;
   margin: 0 auto;
+  padding: 3em 0 1em;
+}
+
+.header__container__title {
+  font-size: 3rem;
+  text-transform: lowercase;
+  font-weight: 300;
+  padding: 0;
+  letter-spacing: -.1rem;
+  line-height: .85;
+  color: white;
+}
+
+.header__container__title--strong {
+  padding-top: 0.25em;
+  font-weight: 700;
+  display:block;
+}
+
+
+.main {
+  max-width: 700px;
+  margin: 1.5em auto 0;
   text-align: center;
   font-size: 1.5rem;
 }
@@ -57,6 +84,14 @@ button {
   margin-top: 0.5em;
 }
 
+button:hover {
+  background-color: black;
+  color: white;
+  transition: 500ms;
+  cursor: pointer;
+  
+}
+
 .results {
   margin: 0 auto;
   text-align: center;
@@ -86,4 +121,11 @@ button {
   display: block;
   text-transform: lowercase; 
   margin-bottom: 0.25em;
+}
+
+.error {
+  color: red;
+  display: block;
+  padding-bottom: 0.5em;
+  text-transform: lowercase;
 }

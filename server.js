@@ -10,17 +10,15 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname+'/views/index.html');
 })
 
-app.post('/api/new', (req, res) => {
-//   [
-//     check('name').isAlphanumeric(),
-//     check('date').isDate()
-//   ], 
-// const errors = validationResult(req);
-// if(!errors.isEmpty()) {
-//   return res.status(422).json({errors: errors.array()});
-// }
-  user.addNew(req, res);
+app.post('/api/new', [
+    check('name').isAlphanumeric()
+  ], (req, res) => {
 
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  }
+    user.addNew(req, res);
 });
 
 app.get('/api/all', (req, res) => {

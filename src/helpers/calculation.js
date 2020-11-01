@@ -18,7 +18,7 @@ const calculateAge = (dateOfBirth) => {
     let timeInHours = (now.diff(dateOfBirth, 'hours'));
 
     let leapYears = getLeapYears(birthYear, currentYear);
-    console.log("leap years: "+leapYears);
+  
     timeInHours -= (8784 * leapYears);
 
     years -= leapYears;
@@ -30,9 +30,6 @@ const calculateAge = (dateOfBirth) => {
     // get days
     let days = parseInt(timeInHours / 24);
     timeInHours = timeInHours % 24;
-
-    console.log("days: " + days);
-    console.log("hours: " + timeInHours);
 
     return birthYear;
 }

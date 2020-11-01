@@ -25,14 +25,14 @@ const fetchUsers = async () => {
     }
 }
 
-const calculateAge = (userRecord) => {
-    let element = {};
-    let date = userRecord.dateOfBirth;
-    element.name = userRecord.name;
-    element.years = now.diff(date, 'years'),
-    element.days = now.diff(date, 'days'),
-    element.hours = now.diff(date, 'hours')
-    return element;
-}
+// const calculateAge = (userRecord) => {
+//     let element = {};
+//     let date = userRecord.dateOfBirth;
+//     element.name = userRecord.name;
+//     element.years = now.diff(date, 'years'),
+//     element.days = now.diff(date, 'days'),
+//     element.hours = now.diff(date, 'hours')
+//     return element;
+// }
 
-module.exports = {createNew, fetchUsers, calculateAge}
+module.exports = {createNew, fetchUsers}

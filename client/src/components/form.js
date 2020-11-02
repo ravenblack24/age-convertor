@@ -4,7 +4,14 @@ import 'react-dates/initialize';
 import { SingleDatePicker, isInclusivelyBeforeDay} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
+/**
+ * Component to render form
+ */
 class Form extends Component {
+
+    /**
+     * @inheritdoc
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -22,6 +29,11 @@ class Form extends Component {
         this.onNameChange = this.onNameChange.bind(this);
     }
     
+    /**
+     * Change handler for SingleDatePicker
+     * 
+     * @param {Moment} dateSelected the date chosen in the SingleDatePicker
+     */
     onDateChange(dateSelected) {
         const formData = {...this.state.formData, date: dateSelected.utc().set({
             hour: "00",
@@ -33,6 +45,11 @@ class Form extends Component {
         })
     }
 
+    /**
+     * Change handler for input field
+     * 
+     * @param {Event} event the input field change event
+     */
     onNameChange(event) {
         const formData = {...this.state.formData, name: event.target.value};
         this.setState({
@@ -40,6 +57,9 @@ class Form extends Component {
         })
     }
 
+    /**
+     * Validates form inputs to ensure valid input and date values
+     */
     validateForm() {
         if(this.state.formData.name === "" || this.state.formData.name == null) {
             this.setState({
@@ -51,6 +71,7 @@ class Form extends Component {
             })
         }
 
+        // @todo change to moment()
         var now = new Date();
         if(this.state.formData.date == null || this.state.formData.date > now ) {
             this.setState({
@@ -65,20 +86,24 @@ class Form extends Component {
         return (!this.state.nameError && !this.state.dateError);
     }
 
+    /**
+     * Process the form when submit button is pressed
+     * 
+     * @param {Event} event the form submit event
+     * 
+     * @throws {Error}
+     */
     async handleSubmit(event) {
         event.preventDefault();
         this.clearSubmitError();
 
         if(this.validateForm()) {
-
             try {
-            
                 await fetch('/api/new', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(this.state.formData)
                 });
-
                 await this.props.loadData();
                 this.resetForm();  
 
@@ -89,18 +114,27 @@ class Form extends Component {
         }
     }  
 
+    /**
+     * Set submit error state
+     */
     showSubmitError() {
         this.setState({
             submitError : true
         }) 
     }
 
+    /**
+     * Clear submit error state
+     */
     clearSubmitError() {
         this.setState({
             submitError : false
         }) 
     }
 
+    /**
+     * Reset form inputs to default
+     */
     resetForm() {
         this.setState({
             formData : { 
@@ -110,6 +144,9 @@ class Form extends Component {
         }) 
     }
 
+    /**
+     * @inheritdoc
+     */
     render() {
         return (
             <form action="POST" method="/api/new" className="form">
@@ -118,11 +155,11 @@ class Form extends Component {
                 {this.state.nameError ? <span className="error">Please enter a name</span> : ''}
                 <label htmlFor="dob" className="app__form__label">Date of birth*</label>
                 <SingleDatePicker 
-                    date={this.state.formData.date} // momentPropTypes.momentObj or null
-                    onDateChange={this.onDateChange} // PropTypes.func.isRequired
-                    focused={this.state.focused} // PropTypes.bool
-                    onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                    id="dob" // PropTypes.string.isRequired,
+                    date={this.state.formData.date} 
+                    onDateChange={this.onDateChange} 
+                    focused={this.state.focused} 
+                    onFocusChange={({ focused }) => this.setState({ focused })} 
+                    id="dob"
                     isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
                     numberOfMonths={1}
                     displayFormat="DD/MM/YYYY"

@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Component to display user records
+ * 
+ * @param {array} data  the records of user data
+ */
 function Results (props) {
 
     if(props.data.length === 0) {

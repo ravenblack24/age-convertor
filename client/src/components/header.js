@@ -1,6 +1,12 @@
 import React from 'react';
 
-function header (props) {
+/**
+ * Component to display header
+ * 
+ * @return {React.ReactNode} 
+ * 
+ */
+function header () {
     return (
         <header className="header">
         <div className="header__container">

@@ -1,39 +1,29 @@
 const moment = require('moment');
 
 const calculateAge = (dateOfBirth) => {
-    //const date = new Date(dateOfBirth);
+    const LEAP_YEAR_IN_HOURS = 8784;
+    const YEAR_IN_HOURS = 8760;
+
     const date = moment(dateOfBirth);
     const now = moment();
-    const birthYear = date.format('YYYY');
-    const currentYear = now.format('YYYY');
-    const yr = (now.diff(date, 'years').toLocaleString());
+    const years = now.diff(date, 'years');
 
-    let years;
-    
-    if(date.month() >= now.month() && date.date() > now.date()) {
-       years = (currentYear-1) - birthYear;
-    } else {
-        years = currentYear - birthYear;
-    }
-
-    let timeInHours = (now.diff(date, 'hours'));
-
-    let leapYears = countLeapYears(birthYear, currentYear);
+    let timeInHours = now.diff(date, 'hours');
+    let yearCounter = years; // to not mutate years
+    let leapYearCount = countLeapYears(date.format('YYYY'), now.format('YYYY'));
   
-    timeInHours -= (8784 * leapYears);
-    years -= leapYears;
+    timeInHours -= (LEAP_YEAR_IN_HOURS * leapYearCount);
+    yearCounter -= leapYearCount;
     
-    if(years > 0) {
-        timeInHours = timeInHours % (parseInt(8760 * years));
+    if(yearCounter > 0) {
+        timeInHours = timeInHours % (parseInt(YEAR_IN_HOURS * yearCounter));
     }
 
-    // get days
-    let days = parseInt(timeInHours / 24);
-    // get hours
-    let hours = timeInHours % 24;
-    console.log(dateOfBirth.toDateString(), yr, days, hours);
-
-    return {days, hours};
+    return {
+        years: years.toLocaleString(), 
+        days: parseInt(timeInHours / 24), 
+        hours: timeInHours % 24
+    };
 }
 
 const countLeapYears = (birthYear, currentYear) => {

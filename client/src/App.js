@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       items: []
     };
+    this.loadApi = this.loadApi.bind(this);
   }
 
   async componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
       const items = await data.json();
 
       if(items) {
+
         this.setState({
           items
         })

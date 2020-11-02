@@ -23,7 +23,11 @@ class Form extends Component {
     }
     
     onDateChange(dateSelected) {
-        const formData = {...this.state.formData, date: dateSelected};
+        const formData = {...this.state.formData, date: dateSelected.utc().set({
+            hour: "00",
+            minute: "00",
+            second: "00"
+        })};
         this.setState({
             formData
         })

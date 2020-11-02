@@ -20,16 +20,17 @@ const getAll = async (req, res) => {
     try {
         const data = await fetchUsers();
         const response = [];
-        const now = moment();
 
         data.forEach(entry => {
             let element = {};
-            let date = entry.dateOfBirth;
+            const date = entry.dateOfBirth;
+            const ageCalc = calculateAge(date)
+
             element.id = entry._id;
             element.name = entry.name;
-            element.years = (now.diff(date, 'years').toLocaleString());
-            element.days = calculateAge(date).days;
-            element.hours = calculateAge(date).hours;
+            element.years = ageCalc.years;
+            element.days = ageCalc.days;
+            element.hours = ageCalc.hours;
             response.push(element);
         });
 

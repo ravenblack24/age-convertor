@@ -1,38 +1,37 @@
 const UserAge = require('../model/user');
 
+/**
+ * Add record to database
+ * 
+ * @param {String} name the user name
+ * @param {Moment} dateOfBirth the user date of birth
+ * 
+ * @return {Promise<Object>}
+ * @throws {Error} 
+ */
 const createNew = async (name, dateOfBirth) => {
     try {
-        let query = { 
-            name,
-            dateOfBirth
-        };
-        const newUser = UserAge(query);
+        const newUser = UserAge({name, dateOfBirth});
         const saved = await newUser.save();
-        console.log("Saved");
         return saved;
     } catch (err) {
         throw new Error("Error saving new entry");
     }
 }
 
+/**
+ * Retrieve all records from database
+ * 
+ * @return {Promise<Object>}
+ * @throws {Error} 
+ */
 const fetchUsers = async () => {
     try {
-       var data = await UserAge.find({});
-       console.log("data retrieved");
+       const data = await UserAge.find({});
        return data;
     } catch (err) {
         throw new Error("Error retrieving user records");
     }
 }
-
-// const calculateAge = (userRecord) => {
-//     let element = {};
-//     let date = userRecord.dateOfBirth;
-//     element.name = userRecord.name;
-//     element.years = now.diff(date, 'years'),
-//     element.days = now.diff(date, 'days'),
-//     element.hours = now.diff(date, 'hours')
-//     return element;
-// }
 
 module.exports = {createNew, fetchUsers}

@@ -1,5 +1,12 @@
 const moment = require('moment');
 
+/**
+ * Calculates age in years, days and hours
+ * 
+ * @param {String} dateOfBirth the date of birth in YYYY-MM-DD format
+ * 
+ * @return {Object}
+ */
 const calculateAge = (dateOfBirth) => {
     const LEAP_YEAR_IN_HOURS = 8784;
     const YEAR_IN_HOURS = 8760;
@@ -26,6 +33,14 @@ const calculateAge = (dateOfBirth) => {
     };
 }
 
+/**
+ * Calculates the number of leap years since year of birth
+ * 
+ * @param {String} birthYear  the year of birth
+ * @param {String} currentYear  the current year
+ * 
+ * @return {Number}
+ */
 const countLeapYears = (birthYear, currentYear) => {
     let count=0;
 

@@ -21,15 +21,16 @@ This app was built to satisfy the following User Story and acceptance criteria:
 - **Acceptance Criteria #4**: Name and age of previous submissions is displayed
 
 ## Technologies
-* React.js, express.js, mongoose.js, mongodb, node.js
+* React.js, express.js, mongoose.js, node.js, mongodb
 
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
 ## Setup
 
-1. In the **root** project directory **AND** within the **client/** folder run: `npm install`, to install the required backend and frontend libraries.
-2. Create a .env file within the root project directory and create a <code>MONGO_URI=</code> entry with your MongoDB url.  There should be no whitespace seperating the variable from the value.
-3. Within the root directory, run `npm run dev` to start the app
+1. In both the **root** project directory run: `npm install`, to install the required backend dependencies.
+2. Navigate to the client/ directory and run: `npm install`, to install the required frontend dependencies.
+3. Create a .env file within the root project directory and add a <code>MONGO_URI=</code> entry with your MongoDB url.  There should be no whitespace seperating the variable from the value.
+4. Within the root directory, run `npm run dev` to start the app
 
 ## Available Scripts
 

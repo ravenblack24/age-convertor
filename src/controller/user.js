@@ -20,7 +20,7 @@ const getAll = async (req, res) => {
     try {
         const data = await fetchUsers();
         const response = [];
-        const now = new moment();
+        const now = moment();
 
         data.forEach(entry => {
             let element = {};
@@ -28,14 +28,12 @@ const getAll = async (req, res) => {
             element.id = entry._id;
             element.name = entry.name;
             element.years = (now.diff(date, 'years').toLocaleString());
-          //  let leapYears = calculateAge(date);
-          //  console.log(leapYears);
-            // element.days = (now.diff(date, 'days').toLocaleString()),
-            // element.hours = (now.diff(date, 'hours').toLocaleString())
-           // response.push(element);
+            element.days = calculateAge(date).days;
+            element.hours = calculateAge(date).hours;
+            response.push(element);
         });
 
-        // return res.json(response);
+         return res.json(response);
 
     } catch (err) {
         return res.send({error: "Unable to get records"});

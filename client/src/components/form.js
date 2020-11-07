@@ -105,11 +105,16 @@ class Form extends Component {
 
         if(this.validateForm()) {
             try {
-                await fetch('/api/new', {
+                const response = await fetch('/api/new', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(this.state.formData)
                 });
+
+                if(!response.ok) {
+                    this.showSubmitError();
+                }
+
                 await this.props.loadData();
                 this.resetForm();  
 

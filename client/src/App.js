@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <React.Fragment>
           <Header />
-          <section class="main">
+          <section className="main">
             <Form loadData = {this.loadApi}/>
             <Results data={this.state.items} />
           </section>

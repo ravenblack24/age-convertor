@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
  * Route for adding new record
  */
 app.post('/api/new', [
-    check('name').isAlphanumeric()
+    check('name').matches(/^[a-z0-9 ]+$/i)
   ], (req, res) => {
 
   const errors = validationResult(req);

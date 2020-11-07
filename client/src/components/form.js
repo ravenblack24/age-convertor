@@ -35,11 +35,17 @@ class Form extends Component {
      * @param {Moment} dateSelected the date chosen in the SingleDatePicker
      */
     onDateChange(dateSelected) {
-        const formData = {...this.state.formData, date: dateSelected.utc().set({
+        
+        let date;
+        
+        if(dateSelected) {
+            date = dateSelected.utc().set({
             hour: "00",
             minute: "00",
             second: "00"
         })};
+
+        const formData = {...this.state.formData, date}
         this.setState({
             formData
         })

@@ -57,6 +57,7 @@ class Form extends Component {
      * @param {Event} event the input field change event
      */
     onNameChange(event) {
+
         const formData = {...this.state.formData, name: event.target.value};
         this.setState({
             formData
@@ -155,6 +156,33 @@ class Form extends Component {
         }) 
     }
 
+    returnYears = () => {
+        let years = []
+        for(let i = moment().year() - 100; i <= moment().year(); i++) {
+            years.push(<option value={i}>{i}</option>);
+        }
+        return years;
+    }
+
+    renderMonthElement = ({ month, onMonthSelect, onYearSelect }) =>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div>
+            <select
+                value={month.month()}
+                onChange={(e) => onMonthSelect(month, e.target.value)}
+            >
+                {moment.months().map((label, value) => (
+                    <option value={value}>{label}</option>
+                ))}
+            </select>
+        </div>
+        <div>
+            <select value={month.year()} onChange={(e) => onYearSelect(month, e.target.value)}>
+                {this.returnYears()}
+            </select>
+        </div>
+    </div>
+
     /**
      * @inheritdoc
      */
@@ -174,6 +202,7 @@ class Form extends Component {
                     isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
                     numberOfMonths={1}
                     displayFormat="DD/MM/YYYY"
+                    renderMonthElement={this.renderMonthElement}
                 />
                 {this.state.dateError ? <span className="error">Please select/enter a valid past date</span> : ''}
                 <br />

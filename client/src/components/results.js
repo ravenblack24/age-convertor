@@ -24,7 +24,7 @@ function Results (props) {
                 </tr>
                 </thead>
                 <tbody>
-                {props.data.reverse().map(item => (
+                {(props.data.reverse()).map(item => (
                     <tr key={item.id}>
                         <td>{item.name}</td>
                         <td>{item.years}</td>

@@ -29,8 +29,9 @@ The project was bootstrapped with [Create React App](https://github.com/facebook
 
 1. In both the **root** project directory run: `npm install`, to install the required backend dependencies.
 2. Navigate to the client/ directory and run: `npm install`, to install the required frontend dependencies.
-3. Create a .env file within the root project directory and add a <code>MONGO_URI=</code> entry with your MongoDB url.  There should be no whitespace seperating the variable from the value.
-4. Within the root directory, run `npm run dev` to start the app
+3. Sign up for a [MongoDB account](https://account.mongodb.com/account/login) (if you don't already have one).
+4. Create a .env file within the root project directory and add a <code>MONGO_URI=</code> entry with your MongoDB url.  There should be no whitespace seperating the variable from the value.
+5. Within the root directory, run `npm run dev` to start the app
 
 ## Available Scripts
 
